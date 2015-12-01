@@ -1,4 +1,4 @@
-.pkg/
-*.gem
-Gemfile.lock
-.idea
+/.bundle
+/*.gem
+/Gemfile.lock
+pkg
