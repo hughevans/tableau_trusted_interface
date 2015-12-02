@@ -8,7 +8,7 @@ module TableauTrustedInterface
 
     def initialize(options = {})
       @path = options.fetch(:path, nil)
-      @embed_params = parse_embed_params(options.fetch(:embed_params, []))
+      @embed_params = parse_embed_params(options.fetch(:embed_params, {}))
       @user = options.fetch(:user, TableauTrustedInterface.config.default_tableau_user)
       @server = options.fetch(:server, TableauTrustedInterface.config.default_tableau_server)
 
