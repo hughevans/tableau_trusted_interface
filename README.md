@@ -14,8 +14,8 @@ You have the option of specifying a default server address and user:
 
 ``` ruby
 TableauTrustedInterface.configure do |config|
-  config.default_tableau_user = 'foobar'
   config.default_tableau_server = 'http://example.com'
+  config.default_tableau_user = 'foobar'
 end
 ```
 
