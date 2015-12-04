@@ -110,4 +110,24 @@ RSpec.describe TableauTrustedInterface::Report, vcr: { cassette_name: 'success' 
       end
     end
   end
+
+  context 'when there is a socket error connecting to the server' do
+    before do
+      allow(RestClient).to receive(:post).and_raise(SocketError)
+    end
+
+    it 'rescues it and raises a custom exception' do
+      expect { subject }.to raise_error(TableauTrustedInterface::ServerUnavailable, 'https://example.com')
+    end
+  end
+
+  context 'when there is a time out error connecting to the server' do
+    before do
+      allow(RestClient).to receive(:post).and_raise(RestClient::RequestTimeout)
+    end
+
+    it 'rescues it and raises a custom exception' do
+      expect { subject }.to raise_error(TableauTrustedInterface::ServerUnavailable, 'https://example.com')
+    end
+  end
 end
