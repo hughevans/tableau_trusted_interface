@@ -1,9 +1,13 @@
 require 'bundler/setup'
 Bundler.setup
 
-require 'tableau_trusted_interface'
+require 'simplecov'
 require 'vcr'
 require 'webmock/rspec'
+
+SimpleCov.start
+
+require 'tableau_trusted_interface'
 
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/cassettes'
