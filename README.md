@@ -1,5 +1,7 @@
 # Tableau Trusted Interface for Ruby
 
+[![Build Status](https://travis-ci.org/hughevans/tableau_trusted_interface.svg?branch=master)](https://travis-ci.org/hughevans/tableau_trusted_interface)
+
 Wrapper for embedding Tableau workbooks using the [Tableau trusted interface](http://onlinehelp.tableau.com/current/server/en-us/help.htm#trusted_auth_how.htm).
 
 ## Installation
@@ -32,7 +34,7 @@ end
 
 You can optionally pass `user:` and `server:` options here too if you don’t want to use the configured defaults.
 
-This would typically be put in a Rails controller. Then in your view you have two public methods:
+This would typically be put in a Rails controller, providing you access to the following methods in your view:
 
  - `@report.report_url`
  - `@report.report_embed_url`
