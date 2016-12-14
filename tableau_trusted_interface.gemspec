@@ -22,5 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'webmock', ['~> 1.22']
   spec.add_runtime_dependency 'activesupport', ['>= 3.0', '< 5.1']
   spec.add_runtime_dependency 'addressable', ['~> 2.3']
-  spec.add_runtime_dependency 'rest-client', ['>= 1.6', '~> 2.0']
+  spec.add_runtime_dependency 'rest-client', ['>= 1.6', '<= 2.0']
 end
