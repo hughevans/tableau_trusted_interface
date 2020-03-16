@@ -3,14 +3,15 @@ require 'rest-client'
 
 module TableauTrustedInterface
   class Report
-    attr_reader :server, :ticket, :user
+    attr_reader :auth_server, :view_server, :ticket, :user
     attr_accessor :embed_params, :path
 
     def initialize(options = {})
       @path = options.fetch(:path, nil)
       @embed_params = parse_embed_params(options.fetch(:embed_params, {}))
       @user = options.fetch(:user, TableauTrustedInterface.config.default_tableau_user)
-      @server = options.fetch(:server, TableauTrustedInterface.config.default_tableau_server)
+      @auth_server = options.fetch(:auth_server, TableauTrustedInterface.config.default_auth_server || TableauTrustedInterface.config.default_server)
+      @view_server = options.fetch(:view_server, TableauTrustedInterface.config.default_view_server || TableauTrustedInterface.config.default_server)
 
       @ticket = generate_ticket
       raise TicketDenied, 'Check Tableau IP white-listing or user access' if @ticket == '-1'
@@ -31,16 +32,16 @@ module TableauTrustedInterface
     end
 
     def generate_ticket
-      raise MissingConfiguration unless user && server
-      RestClient.post(URI.join(server, 'trusted').to_s, username: user)
+      raise MissingConfiguration unless user && auth_server && view_server
+      RestClient.post(URI.join(auth_server, 'trusted').to_s, username: user)
     rescue SocketError, RestClient::RequestTimeout
-      raise ServerUnavailable, server
+      raise ServerUnavailable, auth_server
     end
 
     def report
       address.partial_expand(
-        scheme: URI.parse(server).scheme,
-        host: URI.parse(server).host,
+        scheme: URI.parse(view_server).scheme,
+        host: URI.parse(view_server).host,
         segments: ['trusted', ticket, 'views'],
         report_path: path
       )
