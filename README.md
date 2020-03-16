@@ -12,14 +12,17 @@ Add to your `Gemfile`:
 gem 'tableau_trusted_interface'
 ```
 
-You have the option of specifying a default server address and user:
+You have the option of specifying a default Trusted Authentication server address, view retrieval server address and user:
 
 ``` ruby
 TableauTrustedInterface.configure do |config|
-  config.default_tableau_server = 'http://example.com'
+  config.default_tableau_auth_server = 'http://auth.example.com'
+  config.default_tableau_view_server = 'https://view.example.com'
   config.default_tableau_user = 'foobar'
 end
 ```
+
+As a fallback for both the `default_tableau_auth_server` and `default_tableau_view_server` options, a `default_tableau_server` option can be specified.
 
 ## Usage
 
@@ -32,7 +35,7 @@ end
 )
 ```
 
-You can optionally pass `user:` and `server:` options here too if you don’t want to use the configured defaults.
+You can optionally pass `user:`, `auth_server:` and `view_server:` options here too if you don’t want to use the configured defaults. Similar to the configuration, you can also specify a `server:` option as a fallback for the latter two.
 
 This would typically be put in a Rails controller, providing you access to the following methods in your view:
 
