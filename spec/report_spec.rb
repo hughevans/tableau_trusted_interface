@@ -78,6 +78,15 @@ RSpec.describe TableauTrustedInterface::Report, vcr: { cassette_name: 'success' 
   end
 
   context 'when no auth_server or view_server are passed in as options, but server is', vcr: { cassette_name: 'fallback' } do
+    before do
+      TableauTrustedInterface.configure do |config|
+        config.default_tableau_auth_server = nil
+        config.default_tableau_view_server = nil
+        config.default_tableau_server = nil
+        config.default_tableau_user = nil
+      end
+    end
+    
     subject { TableauTrustedInterface::Report.new(server: 'http://fallback.example.org', user: 'foobar') }
 
     it 'sets #auth_server from the server option' do
@@ -96,9 +105,11 @@ RSpec.describe TableauTrustedInterface::Report, vcr: { cassette_name: 'success' 
         config.default_tableau_auth_server = nil
         config.default_tableau_view_server = nil
         config.default_tableau_server = 'http://fallback.example.org'
-        config.default_tableau_user = 'foobar'
+        config.default_tableau_user = nil
       end
     end
+
+    subject { TableauTrustedInterface::Report.new(user: 'foobar') }
 
     it 'sets #auth_server from the server in the configuration' do
       expect(subject.auth_server).to eql('http://fallback.example.org')
