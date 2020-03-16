@@ -95,6 +95,8 @@ RSpec.describe TableauTrustedInterface::Report, vcr: { cassette_name: 'success' 
       TableauTrustedInterface.configure do |config|
         config.default_tableau_auth_server = nil
         config.default_tableau_view_server = nil
+        config.default_tableau_server = 'http://fallback.example.org'
+        config.default_tableau_user = 'foobar'
       end
     end
 
