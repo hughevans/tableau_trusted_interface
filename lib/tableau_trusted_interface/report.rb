@@ -10,8 +10,8 @@ module TableauTrustedInterface
       @path = options.fetch(:path, nil)
       @embed_params = parse_embed_params(options.fetch(:embed_params, {}))
       @user = options.fetch(:user, TableauTrustedInterface.config.default_tableau_user)
-      @auth_server = options.fetch(:auth_server, TableauTrustedInterface.config.default_auth_server || TableauTrustedInterface.config.default_server)
-      @view_server = options.fetch(:view_server, TableauTrustedInterface.config.default_view_server || TableauTrustedInterface.config.default_server)
+      @auth_server = options.fetch(:auth_server, TableauTrustedInterface.config.default_tableau_auth_server || options.fetch(:server, TableauTrustedInterface.config.default_tableau_server))
+      @view_server = options.fetch(:view_server, TableauTrustedInterface.config.default_tableau_view_server || options.fetch(:server, TableauTrustedInterface.config.default_tableau_server))
 
       @ticket = generate_ticket
       raise TicketDenied, 'Check Tableau IP white-listing or user access' if @ticket == '-1'

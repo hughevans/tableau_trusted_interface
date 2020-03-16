@@ -2,4 +2,6 @@
 /*.gem
 /Gemfile.lock
 /coverage
+/.vs/**
 pkg
+

@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://fallback.example.com/trusted
+    body:
+      encoding: US-ASCII
+      string: username=foobar
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '27'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 01 Dec 2015 10:04:49 GMT
+      Server:
+      - Tableau
+      Pragma:
+      - ''
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      Content-Type:
+      - "*; charset=UTF-8"
+      Content-Length:
+      - '24'
+      P3p:
+      - CP="NON"
+      X-Ua-Compatible:
+      - IE=Edge
+    body:
+      encoding: UTF-8
+      string: MUShkl_p_RrzxTPZTp9JbY_4
+    http_version: 
+  recorded_at: Tue, 01 Dec 2015 10:05:19 GMT
+recorded_with: VCR 3.0.0
