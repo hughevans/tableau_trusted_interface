@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://fallback.example.com/trusted
+    uri: http://fallback.example.org/trusted
     body:
       encoding: US-ASCII
       string: username=foobar
