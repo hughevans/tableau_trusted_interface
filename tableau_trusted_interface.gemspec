@@ -1,7 +1,7 @@
 require File.expand_path('../lib/tableau_trusted_interface/version', __FILE__)
 
 Gem::Specification.new do |spec|
-  spec.name = 'tableau_trusted_interface_buybay'
+  spec.name = 'tableau_trusted_interface'
   spec.version = TableauTrustedInterface::VERSION
   spec.license = 'MIT'
   spec.authors = ['Hugh Evans', 'Rutger van Bergen']
@@ -16,11 +16,11 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.files = Dir['lib/**/*'] + ['README.md']
   spec.homepage = 'http://github.com/rbergen/tableau_trusted_interface'
-  spec.add_development_dependency 'rspec', ['>= 3.4', '<= 3.9']
+  spec.add_development_dependency 'rspec', ['>= 3.4']
   spec.add_development_dependency 'simplecov', ['~> 0.11']
-  spec.add_development_dependency 'vcr', ['>= 3.0', '<= 4.0']
-  spec.add_development_dependency 'webmock', ['>= 1.22', '< 3.4.3']
-  spec.add_runtime_dependency 'activesupport', ['>= 3.0', '< 5.2']
-  spec.add_runtime_dependency 'addressable', ['~> 2.3', '~> 2.5']
-  spec.add_runtime_dependency 'rest-client', ['>= 1.6', '<= 2.1']
+  spec.add_development_dependency 'vcr', ['>= 3.0']
+  spec.add_development_dependency 'webmock', ['>= 1.22']
+  spec.add_runtime_dependency 'activesupport', ['>= 3.0']
+  spec.add_runtime_dependency 'addressable', ['~> 2.3']
+  spec.add_runtime_dependency 'rest-client', ['>= 1.6']
 end

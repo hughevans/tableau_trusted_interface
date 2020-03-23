@@ -8,13 +8,13 @@ Wrapper for embedding Tableau workbooks using the [Tableau trusted interface](ht
 
 Add to your `Gemfile`:
 
-``` ruby
+```ruby
 gem 'tableau_trusted_interface'
 ```
 
 You have the option of specifying a default Trusted Authentication server address, view retrieval server address and user:
 
-``` ruby
+```ruby
 TableauTrustedInterface.configure do |config|
   config.default_tableau_auth_server = 'http://auth.example.com'
   config.default_tableau_view_server = 'https://view.example.com'
@@ -26,12 +26,12 @@ As a fallback for both the `default_tableau_auth_server` and `default_tableau_vi
 
 ## Usage
 
- Instantiate the interface by specifying which workbook you want and the embed params you wish to use:
+Instantiate the interface by specifying which workbook you want and the embed params you wish to use:
 
- ``` ruby
+```ruby
 @report = TableauTrustedInterface::Report.new(
-  path: 'project/workbook',
-  embed_params: { embed: 'yes', toolbar: 'no' }
+ path: 'project/workbook',
+ embed_params: { embed: 'yes', toolbar: 'no' }
 )
 ```
 
@@ -39,16 +39,21 @@ You can optionally pass `user:`, `auth_server:` and `view_server:` options here 
 
 This would typically be put in a Rails controller, providing you access to the following methods in your view:
 
- - `@report.report_url`
- - `@report.report_embed_url`
+- `@report.report_url`
+- `@report.report_embed_url`
 
 For convenience, this is how you embed the report in a responsive Bootstrap 3 iframe:
 
-``` erb
+```erb
 <div class="embed-responsive embed-responsive-16by9">
   <iframe class="embed-responsive-item" src="<%= @report.report_embed_url %>"></iframe>
 </div>
 ```
+
+## Contributors
+
+- [Hugh Evans](https://github.com/hughevans)
+- [Rutger van Bergen](https://github.com/rbergen)
 
 ## License
 

@@ -86,7 +86,7 @@ RSpec.describe TableauTrustedInterface::Report, vcr: { cassette_name: 'success' 
         config.default_tableau_user = nil
       end
     end
-    
+
     subject { TableauTrustedInterface::Report.new(server: 'http://fallback.example.org', user: 'foobar') }
 
     it 'sets #auth_server from the server option' do
